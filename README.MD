@@ -11,6 +11,8 @@
 
 ## Notes
 
+- For the test implementation of getting the latest price and printing to the console see
+  InstrumentIntegrationTest.testGbpUsd
 - The code is uses the simplified hexagonal structure to allow potential separation of message,
   persistance and db modules
 - The task didn'

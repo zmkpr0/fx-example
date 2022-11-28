@@ -3,8 +3,8 @@ package com.example.fxex.message.process;
 import java.math.BigDecimal;
 
 public class ConstantMarginProviderImpl implements MarginProvider {
-  private final BigDecimal bid = new BigDecimal("0.99");
-  private final BigDecimal ask = new BigDecimal("1.01");
+  private final BigDecimal bid = new BigDecimal("0.999");
+  private final BigDecimal ask = new BigDecimal("1.001");
 
   @Override
   public BigDecimal getAskMarginPercentage() {

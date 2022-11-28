@@ -47,6 +47,19 @@ class InstrumentIntegrationTest {
   }
 
   @Test
+  void testGbpUsd() {
+    //when
+    InstrumentDataDto instrumentDataDto = instrumentController.get("GBP/USD");
+    System.out.println("GBP/USD price. Ask: " + instrumentDataDto.getAsk() + " Bid: " + instrumentDataDto.getBid());
+    //then
+    assertThat(instrumentDataDto.getInstrumentName()).isEqualTo("GBP/USD");
+    assertThat(instrumentDataDto.getBid()).isEqualTo("1.2487");
+    assertThat(instrumentDataDto.getAsk()).isEqualTo("1.2574");
+    assertThat(instrumentDataDto.getTimestamp())
+        .isEqualTo(LocalDateTime.of(2020, 6, 1, 12, 1, 2, toNanos(100)));
+  }
+
+  @Test
   void testOlderMessageArrivingAgain() {
     //when
     InstrumentDataDto instrumentDataDto = instrumentController.get("EUR/JPY");
@@ -57,8 +70,8 @@ class InstrumentIntegrationTest {
 
     //then
     assertThat(instrumentDataDto.getInstrumentName()).isEqualTo("EUR/JPY");
-    assertThat(instrumentDataDto.getBid()).isEqualTo("118.4139");
-    assertThat(instrumentDataDto.getAsk()).isEqualTo("121.1091");
+    assertThat(instrumentDataDto.getBid()).isEqualTo("119.4904");
+    assertThat(instrumentDataDto.getAsk()).isEqualTo("120.0299");
     assertThat(instrumentDataDto.getTimestamp())
         .isEqualTo(LocalDateTime.of(2020, 6, 1, 12, 1, 2, toNanos(110)));
   }
@@ -73,23 +86,10 @@ class InstrumentIntegrationTest {
 
     //then
     assertThat(instrumentDataDto.getInstrumentName()).isEqualTo("EUR/JPY");
-    assertThat(instrumentDataDto.getBid()).isEqualTo("118.4139");
-    assertThat(instrumentDataDto.getAsk()).isEqualTo("121.1091");
+    assertThat(instrumentDataDto.getBid()).isEqualTo("119.4904");
+    assertThat(instrumentDataDto.getAsk()).isEqualTo("120.0299");
     assertThat(instrumentDataDto.getTimestamp())
         .isEqualTo(LocalDateTime.of(2020, 6, 1, 12, 1, 2, toNanos(110)));
-  }
-
-  @Test
-  void testGbpUsd() {
-    //when
-    InstrumentDataDto instrumentDataDto = instrumentController.get("GBP/USD");
-
-    //then
-    assertThat(instrumentDataDto.getInstrumentName()).isEqualTo("GBP/USD");
-    assertThat(instrumentDataDto.getBid()).isEqualTo("1.2374");
-    assertThat(instrumentDataDto.getAsk()).isEqualTo("1.2687");
-    assertThat(instrumentDataDto.getTimestamp())
-        .isEqualTo(LocalDateTime.of(2020, 6, 1, 12, 1, 2, toNanos(100)));
   }
 
   @Test
